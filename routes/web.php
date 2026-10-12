@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\controllers\QuestionController;
-use App\Http\controllers\MahasiswaController;
-use App\Http\controllers\HomeController;
 use App\Http\controllers\DashboardController;
+use App\Http\controllers\HomeController;
+use App\Http\controllers\MahasiswaController;
+use App\Http\Controllers\PelangganController;
+use App\Http\controllers\QuestionController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
@@ -59,3 +60,6 @@ Route::get('/question', [QuestionController::class, 'index'])
 Route::get('dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
 
+
+
+        Route::resource('pelanggan', PelangganController::class);
