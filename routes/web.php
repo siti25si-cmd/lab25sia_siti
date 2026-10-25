@@ -6,6 +6,7 @@ use App\Http\controllers\MahasiswaController;
 use App\Http\Controllers\PelangganController;
 use App\Http\controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -63,3 +64,7 @@ Route::get('dashboard', [DashboardController::class, 'index'])
 
 
 Route::resource('pelanggan', PelangganController::class);
+
+
+
+Route::resource('users', UserController::class);
