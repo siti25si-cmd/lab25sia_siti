@@ -1,7 +1,8 @@
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
     <a class="navbar-brand me-lg-5" href="../../index.html">
-        <img class="navbar-brand-dark" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" /> <img
-            class="navbar-brand-light" src="{{ asset('') }}assets-admin/img/brand/dark.svg" alt="Volt logo" />
+        <img class="navbar-brand-dark" src="{{ asset('assets-admin/assets/img/brand/light.svg') }}" alt="Volt logo" />
+        <img class="navbar-brand-light" src="{{ asset('assets-admin/assets/img/brand/dark.svg') }}" alt="Volt logo" />
+
     </a>
     <div class="d-flex align-items-center">
         <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
@@ -18,7 +19,7 @@
             class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="avatar-lg me-4">
-                    <img src="{{ asset('assets-admin/img/team/profile-picture-3.jpg') }}"
+                    <img src="{{ asset('assets-admin/assets/img/team/profile-picture-3.jpg') }}"
                         class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                 </div>
                 <div class="d-block">
@@ -51,13 +52,13 @@
             <li class="nav-item">
                 <a href="../../index.html" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
-                        <img src="{{ asset('assets-admin/img/brand/light.svg') }}" height="20" width="20"
+                        <img src="{{ asset('assets-admin/assets/img/brand/light.svg') }}" height="20" width="20"
                             alt="Volt Logo">
                     </span>
                     <span class="mt-1 ms-1 sidebar-text">Volt Overview</span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->routeIs('pelanggan.*') ? 'active' : '' }}">
+            <li class="nav-item {{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
                 <a href="{{ route('dashboard.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -71,7 +72,7 @@
             </li>
             <!-- Tambahkan blok kode ini -->
             <li class="nav-item {{ request()->routeIs('pelanggan.*') ? 'active' : '' }}">
-                <a href="{{route('pelanggan.index')}}" class="nav-link">
+                <a href="{{ route('pelanggan.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"
                             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -82,6 +83,17 @@
                         </svg>
                     </span>
                     <span class="sidebar-text">Pelanggan</span>
+                </a>
+            </li>
+            <li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                <a href="{{ route('users.index') }}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 0116 0H2z" />
+                        </svg>
+                    </span>
+                    <span class="sidebar-text">User</span>
                 </a>
             </li>
 
