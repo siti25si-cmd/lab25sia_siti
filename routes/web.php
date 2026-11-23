@@ -77,3 +77,13 @@ Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('auth.logout');
+
+    Route::middleware(['checkislogin'])->group(function () {
+
+    Route::middleware(['checkrole:Super Admin'])->group(function () {
+        Route::resource('users', UserController::class);
+    });
+    Route::middleware(['checkrole:Super Admin,mitra'])->group(function () {
+        Route::resource('pelanggan', PelangganController::class);
+    });
+});

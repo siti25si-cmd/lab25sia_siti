@@ -38,12 +38,15 @@ class UserController extends Controller
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+            'role' => 'required|in:Super Admin,Pelanggan,Mitra',
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
+
         ]);
 
         return redirect()
@@ -81,6 +84,7 @@ class UserController extends Controller
                 Rule::unique('users', 'email')->ignore($user->id),
             ],
             'password' => 'nullable|string|min:8|confirmed',
+             'role' => 'required|in:Super Admin,Pelanggan,Mitra',
         ]);
 
         $user->name = $request->name;
@@ -90,7 +94,7 @@ class UserController extends Controller
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
-
+        $user->role=$validated['role'];
         $user->save();
 
         return redirect()
