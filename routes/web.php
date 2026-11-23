@@ -7,6 +7,7 @@ use App\Http\Controllers\PelangganController;
 use App\Http\controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
@@ -68,3 +69,11 @@ Route::resource('pelanggan', PelangganController::class);
 
 
 Route::resource('users', UserController::class);
+
+
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth')
+    ->name('auth.logout');
