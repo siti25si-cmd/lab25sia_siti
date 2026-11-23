@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PelangganController extends Controller
 {
@@ -11,6 +12,10 @@ class PelangganController extends Controller
      */
     public function index(Request $request)
     {
+         if (!Auth::check()) {
+            return redirect()->route('auth.login')->withErrors('silahkan login terlebih dahulu');
+        }
+       
        // Daftar kolom yang bisa difilter sesuai name pada form
     $filterableColumns = ['gender'];
 

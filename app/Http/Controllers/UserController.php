@@ -6,12 +6,17 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     // Menampilkan daftar User
     public function index()
     {
+         if (!Auth::check()) {
+            return redirect()->route('auth.login')->withErrors('silahkan login terlebih dahulu');
+        }
+
         $data['dataUser'] = User::all();
 
         return view('admin.user.index', $data);
@@ -20,6 +25,9 @@ class UserController extends Controller
     // Menampilkan form tambah User
     public function create()
     {
+         if (!Auth::check()) {
+            return redirect()->route('auth.login')->withErrors('silahkan login terlebih dahulu');
+        }
         return view('admin.user.create');
     }
 
